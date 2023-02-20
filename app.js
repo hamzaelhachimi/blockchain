@@ -7,7 +7,7 @@ const Blockchain = require('./blockchain');
 const ejs = require('ejs');
 
 const app = express();
-const port = 3000;
+
 // Set EJS as the view engine
 app.set('view engine', 'ejs');
 
@@ -17,6 +17,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Routes for registration and login pages
 app.get('/register', (req, res) => {
   res.render('registration', { errorMessage: null });
+});
+app.get('/', (req, res) => {
+  res.render('index', { errorMessage: null });
 });
 
 app.get('/login', (req, res) => {
@@ -104,7 +107,9 @@ app.get('/user', authenticate, (req, res) => {
 });
 
 
+  const port = 3000;
+
   
-app.listen(3000, () => {
-  console.log('Server listening on port 3000');
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
 });
